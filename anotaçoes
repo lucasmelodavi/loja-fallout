@@ -1,0 +1,74 @@
+Projeto Loja Fallout
+Objetivo
+
+Criar um sistema de comércio no universo Fallout onde sobreviventes utilizam Tampas (Caps) para comprar recursos no Wasteland.
+
+Regras do Sistema
+1. Identificação do Sobrevivente
+O sobrevivente deve informar seu número de identificação para acessar o terminal.
+Apenas sobreviventes cadastrados podem acessar a loja.
+Exemplo
+SV-1045
+2. Registro de Sobreviventes
+
+Cada sobrevivente possui:
+
+Número de identificação
+Quantidade de Caps disponível
+Exemplo
+SV-1045
+Caps: 250
+3. Sistema de Moeda
+
+A moeda oficial da loja é:
+
+Caps (Tampas)
+
+Cada sobrevivente possui uma quantidade própria de Caps.
+
+4. Produtos
+
+Cada item possui:
+
+Nome
+Quantidade em estoque
+Valor em Caps
+Exemplo
+Stimpak ............ 25 Caps
+Nuka-Cola .......... 10 Caps
+Água Purificada .... 15 Caps
+5. Acesso à Loja
+
+Se o sobrevivente não estiver registrado:
+
+Acesso Negado
+Sobrevivente não encontrado.
+
+O acesso ao sistema será bloqueado.
+
+6. Compra de Itens
+
+O sobrevivente pode:
+
+Escolher um ou mais itens
+Informar a quantidade desejada
+
+O sistema calcula automaticamente o valor total da compra.
+
+7. Validação de Caps
+
+Antes de finalizar uma compra o sistema deve verificar:
+
+Caps do sobrevivente ≥ Valor total da compra
+
+Se não possuir Caps suficientes:
+
+Caps insuficientes.
+Compra cancelada.
+8. Finalização da Compra
+
+Se a compra for aprovada:
+
+Os Caps são descontados.
+O estoque do item é atualizado.
+A compra é registrada no histórico.
