@@ -1,33 +1,18 @@
 import express from "express";
-import { open } from "sqlite";
-import sqlite3 from "sqlite3";
+import { connectDB } from "./db.js";
+
+import loginRoutes from "./routes/login.js";
+import lojaRoutes from "./routes/loja.js";
 
 const app = express();
-let db;
 
-async function login(id) {
-  const user = await db.get("SELECT * FROM usuarios WHERE id = ?", [id]);
-  return user;
-}
+app.use(express.json());
 
-async function startDB() {
-  db = await open({
-    filename: "./Banco.db",
-    driver: sqlite3.Database,
-  });
-  console.log("===== LOGIN ======");
-  const user = await login("10011");
+await connectDB();
 
-  if (user) {
-    console.log("ID:", user.id);
-    console.log("Nome:", user.Sobrevivente);
-    console.log("Tampas:", user["tampas "]);
-    console.log("=================");
-  } else {
-    console.log("Acesso negado");
-  }
-}
+app.use(loginRoutes);
+app.use(lojaRoutes);
 
-app.listen(3000, async () => {
-  await startDB();
+app.listen(3000, () => {
+  console.log("Servidor rodando na porta 3000");
 });
