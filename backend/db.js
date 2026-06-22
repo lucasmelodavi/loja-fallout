@@ -1,13 +1,18 @@
-import { open } from "sqlite";
 import sqlite3 from "sqlite3";
+import path from "path";
+import { fileURLToPath } from "url";
 
-export let db;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-export async function connectDB() {
-  db = await open({
-    filename: "./Banco.db",
-    driver: sqlite3.Database,
-  });
+sqlite3.verbose();
 
-  console.log("Acesso Permitido");
-}
+const dbPath = path.join(__dirname, "Banco.db");
+
+export const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.log("❌ ERRO BANCO:", err.message);
+  } else {
+    console.log("✅ BANCO CONECTADO");
+  }
+});
