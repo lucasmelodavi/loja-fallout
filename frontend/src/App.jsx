@@ -1,9 +1,6 @@
-import Login from "./pages/Login.jsx";
+import Login from "./pages/Login";
 import "./App.css";
 
-function App() {
- 
-
+export default function App() {
+  return <Login />;
 }
-
-export default  App;

@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+
 import loginRoutes from "./routes/login.js";
 import itensRoutes from "./routes/itens.js";
 
@@ -11,6 +12,6 @@ app.use(express.json());
 app.use("/login", loginRoutes);
 app.use("/itens", itensRoutes);
 
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
+app.listen(4000, () => {
+  console.log("Servidor rodando na porta 4000");
 });
