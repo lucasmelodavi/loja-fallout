@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Loja from "./Loja";
 
 export default function Login() {
   const [id, setId] = useState("");
@@ -14,7 +15,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/login", {
+      const res = await fetch("http://localhost:4000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,40 +42,26 @@ export default function Login() {
     setLoading(false);
   }
 
-  return (
-    <div className="login-box">
-      <h1>[ FALLOUT STORE ]</h1>
+return (
+  <div className="login-box">
+    <h1>[ FALLOUT STORE ]</h1>
 
-      {!user ? (
-        <>
-          <input
-            type="text"
-            placeholder="DIGITE SEU ID"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-          />
+    {!user ? (
+      <>
+        <input
+          type="text"
+          placeholder="DIGITE SEU ID"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+        />
 
-          <button onClick={handleLogin} disabled={loading}>
-            {loading ? "CONECTANDO..." : "ENTRAR"}
-          </button>
-        </>
-      ) : (
-        <div>
-          <h2>[ SOBREVIVENTE CONECTADO ]</h2>
-
-          <p>
-            <strong>[Sobrevivente:</strong> {user.Sobrevivente}]
-          </p>
-
-          <p>
-            <strong>[ID:</strong> {user.id}]
-          </p>
-
-          <p>
-            <strong>[TAMPAS:</strong> {user["tampas "]}]
-          </p>
-        </div>
-      )}
-    </div>
-  );
+        <button onClick={handleLogin} disabled={loading}>
+          {loading ? "CONECTANDO..." : "ENTRAR"}
+        </button>
+      </>
+    ) : (
+      <Loja user={user} />
+    )}
+  </div>
+);
 }
