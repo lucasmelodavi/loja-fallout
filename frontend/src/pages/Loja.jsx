@@ -28,9 +28,9 @@ export default function Loja({ user }) {
 
   return (
     <div className="store">
-      <Header />
+      <Menu setAba={setAba} />
 
-      <Menu aba={aba} setAba={setAba} />
+      <Header />
 
       <Usuario user={user} />
 
@@ -47,13 +47,8 @@ export default function Loja({ user }) {
       {aba === "pagamento" && (
         <div className="pagamento">
           <h2>Pagamento</h2>
-
-          <p>Saldo disponível: {user.tampas} tampas.</p>
-
-          <p>Em breve você poderá visualizar suas compras aqui.</p>
         </div>
       )}
     </div>
   );
 }
-

@@ -25,9 +25,6 @@ export default function Login() {
 
       const data = await res.json();
 
-      console.log("DATA:", data);
-      console.log("USER:", data.user);
-
       if (data.ok) {
         setUser(data.user);
       } else {
@@ -42,26 +39,26 @@ export default function Login() {
     setLoading(false);
   }
 
-return (
-  <div className="login-box">
-    <h1>[ FALLOUT STORE ]</h1>
+  return (
+    <>
+      {!user ? (
+        <div className="login-box">
+          <h1>[ FALLOUT STORE ]</h1>
 
-    {!user ? (
-      <>
-        <input
-          type="text"
-          placeholder="DIGITE SEU ID"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="DIGITE SEU ID"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
 
-        <button onClick={handleLogin} disabled={loading}>
-          {loading ? "CONECTANDO..." : "ENTRAR"}
-        </button>
-      </>
-    ) : (
-      <Loja user={user} />
-    )}
-  </div>
-);
+          <button onClick={handleLogin} disabled={loading}>
+            {loading ? "CONECTANDO..." : "ENTRAR"}
+          </button>
+        </div>
+      ) : (
+        <Loja user={user} />
+      )}
+    </>
+  );
 }
