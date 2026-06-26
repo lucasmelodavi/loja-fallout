@@ -1,13 +1,15 @@
-export default function Menu({ setAba }) {
+export default function Menu({ aba }) {
   return (
     <div className="menu">
-      <button onClick={() => setAba("loja")}>
+      <span className={aba === "loja" ? "ativo" : ""}>
         LOJA
-      </button>
+      </span>
 
-      <button onClick={() => setAba("pagamento")}>
+      <span>|</span>
+
+      <span className={aba === "pagamento" ? "ativo" : ""}>
         PAGAMENTO
-      </button>
+      </span>
     </div>
   );
 }

@@ -3,7 +3,7 @@ export default function Usuario({ user }) {
     <div className="usuario">
       <h2>Sobrevivente: {user.Sobrevivente}</h2>
 
-      <p>Tampas: {user.tampas}</p>
+      <p>Tampas: {user["tampas "]}</p>
     </div>
   );
 }
